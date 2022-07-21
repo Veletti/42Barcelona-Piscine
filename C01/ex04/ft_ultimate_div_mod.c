@@ -1,0 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rvela-fe <rvela-fe@student.42barc...>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/17 11:58:32 by rvela-fe          #+#    #+#             */
+/*   Updated: 2022/07/20 11:29:03 by rvela-fe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+#include <stdio.h>
+
+void	ft_ultimate_div_mod(int *a, int *b)
+{
+	int	x;
+	int	y;
+
+	x = *a;
+	y = *b;
+	*a = (x / y);
+	*b = (x % y);
+}
+
+int	main(void)
+{
+	int	x;
+	int	y;
+	int	*a;
+	int	*b;
+
+	x = 130;
+	y = 4;
+	a = &x;
+	b = &y;
+	printf ("%d\n", x);
+	printf ("%d\n", y);
+	ft_ultimate_div_mod(a, b);
+	printf ("%d\n", *a);
+	printf ("%d\n", *b);
+	return (0);
+}
