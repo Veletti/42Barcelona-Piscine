@@ -6,7 +6,7 @@
 /*   By: rvela-fe <rvela-fe@student.42barc...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:18:40 by rvela-fe          #+#    #+#             */
-/*   Updated: 2022/07/21 18:46:02 by rvela-fe         ###   ########.fr       */
+/*   Updated: 2022/07/21 20:35:52 by rvela-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
 	unsigned int	n;
 	char	src[8] = "abcdefg";
-	char	dest[15];
+	char	dest[10];
 
-	n = 3;
+	n = 10;
 	printf("src=%s\n", src);
 	printf("dest=%s\n", ft_strncpy(dest, src, n));
 	return(0);
