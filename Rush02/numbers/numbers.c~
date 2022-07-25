@@ -1,0 +1,77 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   numbers.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rvela-fe <rvela-fe@student.42barc...>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/23 18:32:00 by rvela-fe          #+#    #+#             */
+/*   Updated: 2022/07/23 19:14:57 by rvela-fe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+
+void put_nbr(char number)
+{
+	write(1, &number, 1);
+}
+
+char *units(char number)
+{
+	char	*array;
+  
+	if (number == '1')
+		array = "one";
+	else if (number == '2')
+		array = "two";
+	else if (number == '3')
+		array = "three";
+	else if (number == '4')
+		array = "for";
+	else if (number == '5')
+		array = "five";
+	else if (number == '6')
+		array = "six";
+	else if (number == '7')
+		array = "seven";
+	else if (number == '8')
+		array = "eight";
+	else
+		array = "nine";
+	return (array);
+}
+
+char put_number(char *str)
+{
+	int	i;
+	int	count;
+	char	number;
+	
+	i = 0;
+	count = 0;
+	while (str[i] != '\0')
+	{
+		count = count + i;
+		i++;
+	}
+	if (count == 3)
+	{
+	  	i = 0;
+		number	= str[i];
+		printf("%s",units(number));
+		printf("hundred");
+		i++;
+	}
+	return (0);
+}
+
+int	main(int argc, char *argv[])
+{
+  char *str;
+  argv = 0;
+  str = &argv[0][1];
+  put_number(str);
+  return (0);  
+}

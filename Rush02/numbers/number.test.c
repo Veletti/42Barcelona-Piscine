@@ -1,0 +1,190 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   number.test.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rvela-fe <rvela-fe@student.42barc...>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/23 21:41:06 by rvela-fe          #+#    #+#             */
+/*   Updated: 2022/07/23 21:42:23 by rvela-fe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+'0' && str[c] <= '9'))
+return (0);
+c++;
+}
+return (1);
+}
+
+int	main(int argc, char **argv)
+{
+  if (ft_error (argv[1]) && (argc == 2))
+    doprocess(argv[1], "numbers.dict");
+  else if (argc == 3 && ft_error_dic(argv[1]) && ft_error(argv[2]))
+    doprocess(argv[2], argv[1]);
+  if (argc == 2 && !(ft_error (argv[1])))
+    {
+      ft_str ("Error\n");
+      return (0);
+    }
+  else if (!(ft_error_dic(argv[1])))
+    {
+      ft_str ("Dict Error\n");
+      return (0);
+    }
+  return (0);
+}
+
+void	doprocess(char* num, char* dict_name)
+
+{
+  char	*dict_text;
+  int		len;
+  int		mod;
+
+  write(1, "Estas dentro :D", 16);
+  dict_text = ft_read_dict(dict_name);
+  len = ft_strlen(num);
+
+  //ft_str(num);
+  //write(1, "\n", 1);
+  //printf("%d\n",len);
+  ft_str(dict_text);
+
+  mod = len % 3;
+  if (mod == 1)
+    ft_write_uni(dict_text, num[0]);
+  if (mod == 2 && num[0] == '1')
+    ft_write_teens(dict_text, num);
+  if (mod == 2 && num[0] != '1')
+    ft_write_dec(dict_text, num);
+
+}
+void	ft_write_uni(char *dic, char num)
+{
+  int i;
+  int done;
+
+  i = 0;
+  done = 0;
+  while (dic[i] != '\0')
+    {
+      if (dic[i] == num)
+	{
+	  i = i + 1;
+	  while (dic[i] != '\n')
+	    {
+	      done = ft_if_ok_write_char(dic[i]);
+	      i++;
+	    }
+	}
+      i++;
+      if (done == 1)
+	break;
+    }
+
+}
+
+void	ft_write_teens(char *dic, char *num)
+{
+  int i;
+  int done;
+
+  i = 0;
+  done = 0;
+  while (dic[i] != '\0')
+    {
+      if (dic[i] == num[0] && dic[i + 1] == num[1])
+	{
+	  i = i + 2;
+	  while (dic[i] != '\n')
+	    {
+	      done = ft_if_ok_write_char(dic[i]);
+	      i++;
+	    }
+	}
+      i++;
+      if (done == 1)
+	break;
+    }
+}
+
+void	ft_write_dec(char *dic, char *num)
+{
+  int	i;
+  int	done;
+
+  i = 0;
+  done = 0;
+  while (dic[i] != '\0')
+    {
+      if (dic[i] == num[0] && dic[i+1] == '0')
+	{
+	  i = i + 2;
+	  while(dic[i] != '\n')
+	    {
+	      done = ft_if_ok_write_char(dic[i]);
+	      i++;
+	    }
+	  putchar('-');
+	  ft_write_uni(dic, num[1]);
+	}
+      i++;
+      if (done == 1)
+	break;
+    }
+}
+
+int ft_if_ok_write_char(char c)
+{
+  int done;
+
+  done = 0;
+  if (c != ':' && c != ' ')
+    {
+      putchar(c);
+      done = 1;
+    }
+  return (done);
+}
+
+char	*ft_read_dict(char *dictname)
+{
+  int	dict_open;
+  char	*dict_text_aux;
+  char	*dict_text;
+  int	dict_read;
+  int i;
+
+  dict_open = open(dictname, O_RDONLY);
+  if (dict_open < 0)
+    {
+      return (0);
+    }
+  dict_text_aux = (char*)malloc(1000 * sizeof(char));
+  dict_read = read(dict_open, dict_text_aux, 1000);
+  dict_text = (char*)malloc((dict_read + 1)*sizeof(char));
+  i = 0;
+  while (i < dict_read)
+    {
+      dict_text[i] = dict_text_aux[i];
+      i++;
+    }
+  dict_text[i] = '\0';
+  free(dict_text_aux);
+  close(dict_open);
+  return (dict_text);
+}
+
+int	ft_strlen(char *str)
+{
+  int i;
+
+  i = 0;
+  while (str[i] != '\0')
+    {
+      i++;
+    }
+  return (i);
+}
