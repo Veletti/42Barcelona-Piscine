@@ -1,0 +1,75 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rvela-fe <rvela-fe@student.42barc...>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/25 18:51:57 by rvela-fe          #+#    #+#             */
+/*   Updated: 2022/07/25 20:39:55 by rvela-fe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+
+int count_dest(char *dest)
+{
+	int	i;
+	while (dest[i] != '\0')
+	{
+		i++;
+	}
+}
+
+int count_src(char *src)
+{
+	int	i;
+	while (src[i] != '\0')
+	{
+		i++;
+	}
+}
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	unsigned int	i;
+	unsigned int	y;
+	unsigned int	res;
+
+	i = 0;
+	y = 0;
+	res = 0;
+	
+	if (size <= i)
+	{
+		res = res + size;
+	}
+	else
+	{
+		res = res + i;
+	}
+	while (src[y] && (i + 1) < size)
+	{
+		dest[i] = src[y];
+		a++;
+		b++;
+	}
+	dest[i] = '\0';
+	return (res);
+}
+
+int	main(void)
+{
+  char	src[] = "Esto es un test ";
+  char	dest[] = "de logica";
+  unsigned int	n;
+
+  n = 15;
+  printf("Funcion por mi: %u\n", ft_strlcat(dest, src, n));
+  printf("Funcion original: %lu\n", strlcat(dest, src, n));
+  printf("Print de destino %s\n", dest);
+}
+%s\nsrc: %s\n", dest, src);
+}
