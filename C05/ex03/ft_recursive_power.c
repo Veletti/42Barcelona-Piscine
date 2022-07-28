@@ -6,7 +6,7 @@
 /*   By: rvela-fe <rvela-fe@student.42barc...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:27:56 by rvela-fe          #+#    #+#             */
-/*   Updated: 2022/07/28 16:49:53 by rvela-fe         ###   ########.fr       */
+/*   Updated: 2022/07/28 18:29:42 by rvela-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 
 int	ft_recursive_power(int nb, int power)
 {
-	int	count;
 	int	aux;
-
+	
 	aux = nb;
 	if (nb == 0 && power == 0)
 	{
 		return (1);
 	}
-	return(ft_recursive_power(nb*aux, power));
+	else if (power == 0)
+	{
+		return (1);
+	}
+	return (aux * ft_recursive_power(nb, power - 1));
 }
 
 int	main(void)
